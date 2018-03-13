@@ -148,23 +148,26 @@ Insert the following ```stage``` block into your pipeline:
 
 What happens if your input step times out? **Post Actions** are designed to handle a variety of conditions (not only failures) that could occur outside the standard pipeline flow.
 
-In this example we will add a Post Action to our **Deploy** stage to handle a time out (aborted run). Modify your **Deploy** stage to look like:
+In this example we will add a Post Action to our stages to handle aborted run. Modify your pipeline stages to look like:
 
 ```
-      stage('Deploy') {
-        options {
-          timeout(time: 1, unit: 'MINUTES')
+      stages {
+          ...
+          stage('Deploy') {
+            options {
+              timeout(time: 1, unit: 'MINUTES')
+            }
+            input {
+              message "Should we continue?"
+            }
+            steps {
+              echo "Continuing with deployment"
+            }
         }
-        input {
-          message "Should we continue?"
-        }
-        steps {
-          echo "Continuing with deployment"
-        }
-        post {
-          aborted {
-            echo 'Why didn\'t you push my button?'
-          }
+      }
+      post {
+        aborted {
+          echo 'Why didn\'t you push my button?'
         }
       }
 ```
