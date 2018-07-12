@@ -35,7 +35,7 @@ For the first part of **Cross Team Collaboration** we will create an event that 
 
 #### Publish Event
 
-First you have to publish an event from a Pipeline - any other Pipeline may set a trigger to listen for this event. Create a Pipeline job named `notify-event` with the following content:
+First you have to publish an event from a Pipeline - any other Pipeline may set a trigger to listen for this event. Create a Pipeline job named `notify-event` with the following content, but replace `<username>Event` with your username so my event would be `beedemoEvent`:
 
 ```
 pipeline {
@@ -43,24 +43,22 @@ pipeline {
     stages {
         stage('Publish Event') {
             steps {
-                publishEvent simpleEvent('beeEvent')
+                publishEvent simpleEvent('<username>Event')
             }
         }
     }
 }
 ```
 
-Replace `beeEvent` with your `{username}Event` so my event would be `beedemo-devEvent`.
-
 #### Event Trigger
 
-Next, create a Pipeline job name `notify-trigger` and set a `trigger` to listen for the event you created above with the following content:
+Next, create a Pipeline job name `notify-trigger` and set a `trigger` to listen for the event you created above with the following content, again don't forget to edit `<username>Event`:
 
 ```
 pipeline {
     agent none
     triggers {
-        eventTrigger simpleMatch('beeEvent')
+        eventTrigger simpleMatch('<username>Event')
     }
     stages {
         stage('Event Trigger') {
