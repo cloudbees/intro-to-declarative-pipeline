@@ -13,6 +13,12 @@ In this exercise we are going to update our pipeline to demonstrate how **[Check
             checkpoint 'Checkpoint'
          }
       }
+      stage('Deploy') {
+         agent none
+         steps {
+            echo 'Deploying....'
+         }
+      }
 ```
 
 2. **Save & Run** your pipeline.
