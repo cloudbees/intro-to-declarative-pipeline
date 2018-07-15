@@ -33,8 +33,6 @@ In this exercise we are going to update our pipeline to demonstrate how **[Check
 ## Cross Team Collaboration
 In this exercise we are going to set-up two Pipeline jobs (using the Jenkins classic UI) that demonstrate CloudBee's Cross Team Collaboration feature. We will need two separate Pipelines - one that publishes an event - and another that is triggered by an event.
 
->**NOTE**:  You may need to enable this feature on your master.  Navigate to the top level of your master, select "Manage Jenkins" and then "Configure Notification."  Select Enable and choose "Local only."  Then save.
-
 ### Master Events
 
 For the first part of **Cross Team Collaboration** we will create an event that is only published on your master.
@@ -84,6 +82,8 @@ pipeline {
 ```
 
 After creating both of these Pipeline jobs you will need to run the **Event Trigger** job once so that the trigger is registered (similar to what was necessary for job parameters). Once that is complete, click on **Build Now** to run the **Publish Event** job. Once that job has completed, the **Event Trigger** job will be triggered after a few seconds. The logs will show that the job was triggered by an `Event Trigger` and the `when` expression will be true.
+
+>**NOTE**:  If your *trigger* job does not fire, you may need to enable the **Cross Team Collaboration** feature on your master.  Navigate to the top level of your master, select **Manage Jenkins** and then **Configure Notification**.  Next, select **Enable** and choose **Local only** and then click **Save**.
 
 ### Cross-Master Events
 
