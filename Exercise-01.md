@@ -73,7 +73,7 @@ In this exercise we will update the pipeline we created in the previous exercise
 
 ```
   agent {
-    label 'jdk9'
+    label 'jdk10'
   }
 ```
 
@@ -83,9 +83,9 @@ In this exercise we will update the pipeline we created in the previous exercise
 You should see the following output for the `sh` step after your Pipeline runs:
 
 ```
-openjdk version "9.0.4"
-OpenJDK Runtime Environment (build 9.0.4+12-Debian-4)
-OpenJDK 64-Bit Server VM (build 9.0.4+12-Debian-4, mixed mode)
+openjdk version "10.0.4"
+OpenJDK Runtime Environment (build 10.0.4+12-Debian-4)
+OpenJDK 64-Bit Server VM (build 10.0.4+12-Debian-4, mixed mode)
 ```
 
 In addition to `any` and `label` you may also specify `none` and no global agent will be allocated for the entire Pipeline run and each `stage` section will need to contain its own `agent` section.
